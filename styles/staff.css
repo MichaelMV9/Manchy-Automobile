@@ -1,0 +1,100 @@
+.staff-section {
+    padding: var(--spacing-2xl) 0;
+}
+
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.staff-card {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: all var(--transition-normal);
+    text-align: center;
+}
+
+.staff-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.staff-photo {
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, var(--color-light-gray) 0%, var(--color-gray) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--color-gold);
+    overflow: hidden;
+}
+
+.staff-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.staff-info {
+    padding: var(--spacing-lg);
+}
+
+.staff-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: var(--spacing-xs);
+}
+
+.staff-role {
+    font-size: 1.05rem;
+    color: var(--color-gold);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+}
+
+.staff-bio {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.95rem;
+}
+
+.staff-email {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-text);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background-color: var(--color-light-gray);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+}
+
+.staff-email:hover {
+    background-color: var(--color-gold);
+    color: var(--color-black);
+}
+
+@media (max-width: 768px) {
+    .staff-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: var(--spacing-md);
+    }
+
+    .staff-photo {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .staff-grid {
+        grid-template-columns: 1fr;
+    }
+}
