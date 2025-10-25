@@ -72,12 +72,12 @@
 */
 
 -- Create cars table
-CREATE TABLE IF NOT EXISTS cars (
+CREATE TABLE IF NOT EXISTS cars(
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   brand text NOT NULL,
   model text NOT NULL,
   year integer NOT NULL,
-  price decimal(12,2) NOT NULL,
+  price decimal(12 ,2) NOT NULL,
   condition text NOT NULL DEFAULT 'Used',
   transmission text NOT NULL DEFAULT 'Automatic',
   fuel_type text NOT NULL DEFAULT 'Petrol',
