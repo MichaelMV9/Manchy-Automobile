@@ -239,12 +239,12 @@
     }
 }
 
-/* Scroll Animations */
+/* Scroll Animations with Fade In/Out */
 [data-animate] {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-animate].animate-in {
@@ -252,12 +252,102 @@
     transform: translateY(0);
 }
 
+[data-animate].animate-out {
+    opacity: 0;
+    transform: translateY(-40px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.6, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Form wrapper specific animations */
 .contact-form-wrapper[data-animate] {
-    transform: translateY(40px) scale(0.95);
+    transform: translateY(50px) scale(0.95);
+    opacity: 0;
 }
 
 .contact-form-wrapper[data-animate].animate-in {
     transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.contact-form-wrapper[data-animate].animate-out {
+    transform: translateY(-50px) scale(0.95);
+    opacity: 0;
+}
+
+/* Info cards specific animations */
+.info-card[data-animate] {
+    transform: translateX(-30px);
+    opacity: 0;
+}
+
+.info-card[data-animate].animate-in {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.info-card[data-animate].animate-out {
+    transform: translateX(-30px);
+    opacity: 0;
+}
+
+/* Section heading animations */
+.section-heading[data-animate] {
+    transform: translateY(30px) scale(0.9);
+    opacity: 0;
+}
+
+.section-heading[data-animate].animate-in {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.section-heading[data-animate].animate-out {
+    transform: translateY(-30px) scale(0.9);
+    opacity: 0;
+}
+
+/* Form group animations */
+.form-group[data-animate] {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.form-group[data-animate].animate-in {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.form-group[data-animate].animate-out {
+    transform: translateY(-20px);
+    opacity: 0;
+}
+
+/* Button animations */
+button[data-animate] {
+    transform: translateY(30px) scale(0.9);
+    opacity: 0;
+}
+
+button[data-animate].animate-in {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+button[data-animate].animate-out {
+    transform: translateY(-30px) scale(0.9);
+    opacity: 0;
+}
+
+/* Smooth parallax effect on scroll */
+@media (prefers-reduced-motion: no-preference) {
+    .contact-info > *[data-animate] {
+        will-change: transform, opacity;
+    }
+
+    .contact-form-wrapper[data-animate] {
+        will-change: transform, opacity;
+    }
 }
 
 .info-card {
