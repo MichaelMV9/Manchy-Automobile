@@ -2,6 +2,22 @@
     padding: var(--spacing-2xl) 0;
 }
 
+.page-header {
+    padding: var (--sppacing-4xl)0;
+    text-align: center;
+    margin-top: var(--spacing-xl)0;
+}
+.page-header h1 {
+    font-size: 2.5rem;
+    color: var(--color-black);
+    font-weight: 700;
+}
+
+.page-title {
+    margin-top: 100px;
+}
+
+
 .content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
