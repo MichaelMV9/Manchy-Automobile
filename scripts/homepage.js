@@ -52,10 +52,41 @@ function displayCars(cars, container) {
         return;
     }
 
-    cars.forEach(car => {
+    cars.forEach((car, index) => {
         const carCard = createCarCard(car);
+        carCard.setAttribute('data-animate', '');
+        carCard.setAttribute('data-delay', (index * 50).toString());
         container.appendChild(carCard);
     });
+
+    // Re-initialize animations for newly added elements
+    if (window.IntersectionObserver) {
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const delay = entry.target.getAttribute('data-delay') || 0;
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                        entry.target.classList.remove('animate-out');
+                    }, delay);
+                } else {
+                    if (entry.target.classList.contains('animate-in')) {
+                        entry.target.classList.add('animate-out');
+                        entry.target.classList.remove('animate-in');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        container.querySelectorAll('[data-animate]').forEach(el => {
+            animateOnScroll.observe(el);
+        });
+    }
 }
 
 async function loadBrandsForSearch() {

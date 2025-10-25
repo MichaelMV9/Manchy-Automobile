@@ -146,10 +146,41 @@ function displayCars(cars) {
         return;
     }
 
-    cars.forEach(car => {
+    cars.forEach((car, index) => {
         const carCard = createCarCard(car);
+        carCard.setAttribute('data-animate', '');
+        carCard.setAttribute('data-delay', (index * 50).toString());
         carsGrid.appendChild(carCard);
     });
+
+    // Re-initialize animations
+    if (window.IntersectionObserver) {
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const delay = entry.target.getAttribute('data-delay') || 0;
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                        entry.target.classList.remove('animate-out');
+                    }, delay);
+                } else {
+                    if (entry.target.classList.contains('animate-in')) {
+                        entry.target.classList.add('animate-out');
+                        entry.target.classList.remove('animate-in');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        carsGrid.querySelectorAll('[data-animate]').forEach(el => {
+            animateOnScroll.observe(el);
+        });
+    }
 }
 
 function updateResultsCount() {

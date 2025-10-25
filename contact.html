@@ -43,10 +43,10 @@
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h2 class="section-heading">Get In Touch</h2>
-                    <p>Have questions or want to schedule a visit? Reach out to us through any of these channels.</p>
+                    <h2 class="section-heading" data-animate>Get In Touch</h2>
+                    <p data-animate data-delay="50">Have questions or want to schedule a visit? Reach out to us through any of these channels.</p>
 
-                    <div class="info-card">
+                    <div class="info-card" data-animate data-delay="100">
                         <div class="info-icon">📍</div>
                         <div class="info-content">
                             <h4>Visit Us</h4>
@@ -54,7 +54,7 @@
                         </div>
                     </div>
 
-                    <div class="info-card">
+                    <div class="info-card" data-animate data-delay="150">
                         <div class="info-icon">📞</div>
                         <div class="info-content">
                             <h4>Call Us</h4>
@@ -63,7 +63,7 @@
                         </div>
                     </div>
 
-                    <div class="info-card">
+                    <div class="info-card" data-animate data-delay="200">
                         <div class="info-icon">✉️</div>
                         <div class="info-content">
                             <h4>Email Us</h4>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
 
-                    <div class="info-card">
+                    <div class="info-card" data-animate data-delay="250">
                         <div class="info-icon">🕒</div>
                         <div class="info-content">
                             <h4>Business Hours</h4>
@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <div class="social-section">
+                    <div class="social-section" data-animate data-delay="300">
                         <h4>Follow Us</h4>
                         <div class="social-links-large">
                             <a href="https://instagram.com/manchy_automobile_ltd" target="_blank" class="social-btn">
@@ -98,35 +98,42 @@
                     </div>
                 </div>
 
-                <div class="contact-form-wrapper">
-                    <h2 class="section-heading">Send Us a Message</h2>
+                <div class="contact-form-wrapper" data-animate>
+                    <h2 class="section-heading" data-animate data-delay="50">Send Us a Message</h2>
                     <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label class="form-label">Your Name *</label>
-                            <input type="text" name="name" class="form-input" required>
+                        <div class="form-row">
+                            <div class="form-group" data-animate data-delay="100">
+                                <label class="form-label">Your Name *</label>
+                                <input type="text" name="name" class="form-input" required placeholder="John Doe">
+                            </div>
+
+                            <div class="form-group" data-animate data-delay="150">
+                                <label class="form-label">Email Address *</label>
+                                <input type="email" name="email" class="form-input" required placeholder="john@example.com">
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="form-label">Email Address *</label>
-                            <input type="email" name="email" class="form-input" required>
+                        <div class="form-row">
+                            <div class="form-group" data-animate data-delay="200">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" name="phone" class="form-input" placeholder="+234 xxx xxx xxxx">
+                            </div>
+
+                            <div class="form-group" data-animate data-delay="250">
+                                <label class="form-label">Subject *</label>
+                                <input type="text" name="subject" class="form-input" required placeholder="How can we help?">
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="form-label">Phone Number</label>
-                            <input type="tel" name="phone" class="form-input">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Subject *</label>
-                            <input type="text" name="subject" class="form-input" required>
-                        </div>
-
-                        <div class="form-group">
+                        <div class="form-group form-group-full" data-animate data-delay="300">
                             <label class="form-label">Your Message *</label>
-                            <textarea name="message" class="form-textarea" rows="6" required></textarea>
+                            <textarea name="message" class="form-textarea" rows="6" required placeholder="Tell us more about your inquiry..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        <button type="submit" class="btn btn-primary btn-full" data-animate data-delay="350">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-icon">→</span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -213,9 +220,50 @@
     <script src="scripts/supabase.js"></script>
     <script src="scripts/main.js"></script>
     <script>
+        // Scroll Animation Observer with Fade In/Out
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const delay = entry.target.getAttribute('data-delay') || 0;
+
+                if (entry.isIntersecting) {
+                    // Fade in when element enters viewport
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                        entry.target.classList.remove('animate-out');
+                    }, delay);
+                } else {
+                    // Fade out when element leaves viewport
+                    if (entry.target.classList.contains('animate-in')) {
+                        entry.target.classList.add('animate-out');
+                        entry.target.classList.remove('animate-in');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with data-animate attribute
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('[data-animate]').forEach(el => {
+                animateOnScroll.observe(el);
+            });
+        });
+
+        // Form submission
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const formData = new FormData(e.target);
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const originalText = btnText.textContent;
+
+            // Show loading state
+            submitBtn.disabled = true;
+            btnText.textContent = 'Sending...';
 
             const inquiryData = {
                 car_id: null,
@@ -233,6 +281,10 @@
             } catch (error) {
                 console.error('Error:', error);
                 showNotification('Unable to send message. Please try again or contact us directly.', 'error');
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                btnText.textContent = originalText;
             }
         });
     </script>
