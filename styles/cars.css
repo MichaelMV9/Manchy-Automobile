@@ -1,20 +1,41 @@
 .page-header {
-    background: linear-gradient(135deg, var(--color-black) 0%, var(--color-dark-gray) 100%);
+    background: linear-gradient(135deg, var(--color-black) 0%, var(--color-dark-gray) 50%, var(--color-black) 100%);
     color: var(--color-white);
     padding: calc(80px + var(--spacing-2xl)) var(--spacing-md) var(--spacing-2xl);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(244, 196, 48, 0.1) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .page-title {
-    font-size: 3rem;
-    font-weight: 700;
+    font-size: 3.2rem;
+    font-weight: 800;
     margin-bottom: var(--spacing-sm);
-    color: var(--color-gold);
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-hover) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+    position: relative;
+    text-shadow: none;
 }
 
 .page-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: var(--color-light-gray);
+    position: relative;
+    letter-spacing: 0.3px;
 }
 
 .cars-section {

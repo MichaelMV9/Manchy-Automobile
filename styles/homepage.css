@@ -100,12 +100,13 @@
 }
 
 .search-card {
-    background-color: var(--color-white);
-    border-radius: var(--border-radius);
+    background: linear-gradient(135deg, var(--color-white) 0%, var(--color-light-gray) 100%);
+    border-radius: var(--border-radius-lg);
     padding: var(--spacing-xl);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(244, 196, 48, 0.1);
     max-width: 1000px;
     margin: 0 auto;
+    border: 1px solid rgba(244, 196, 48, 0.15);
 }
 
 .search-grid {
@@ -116,18 +117,21 @@
 }
 
 .search-input {
-    padding: 14px 18px;
+    padding: 16px 20px;
     border: 2px solid var(--color-gray);
     border-radius: var(--border-radius);
     font-size: 1rem;
     font-family: var(--font-primary);
-    transition: border-color var(--transition-normal);
+    transition: all var(--transition-normal);
     background-color: var(--color-white);
+    font-weight: 500;
 }
 
 .search-input:focus {
     outline: none;
     border-color: var(--color-gold);
+    box-shadow: 0 0 0 4px rgba(244, 196, 48, 0.1), var(--box-shadow-gold);
+    transform: translateY(-2px);
 }
 
 .featured-cars {
@@ -142,17 +146,19 @@
 }
 
 .car-card {
-    background-color: var(--color-white);
-    border-radius: var(--border-radius);
+    background: linear-gradient(to bottom, var(--color-white) 0%, var(--color-light-gray) 100%);
+    border-radius: var(--border-radius-lg);
     overflow: hidden;
     box-shadow: var(--box-shadow);
     transition: all var(--transition-normal);
     cursor: pointer;
+    border: 1px solid rgba(244, 196, 48, 0.08);
 }
 
 .car-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--box-shadow-hover);
+    transform: translateY(-12px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(244, 196, 48, 0.3);
+    border-color: var(--color-gold);
 }
 
 .car-image {
@@ -171,19 +177,22 @@
 }
 
 .car-card:hover .car-image img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .car-badge {
     position: absolute;
     top: var(--spacing-sm);
     right: var(--spacing-sm);
-    background-color: var(--color-gold);
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-hover) 100%);
     color: var(--color-black);
-    padding: 6px 14px;
+    padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: var(--box-shadow-gold);
 }
 
 .car-info {
@@ -191,10 +200,11 @@
 }
 
 .car-title {
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: 1.35rem;
+    font-weight: 700;
     color: var(--color-black);
     margin-bottom: var(--spacing-xs);
+    letter-spacing: -0.3px;
 }
 
 .car-details {
@@ -206,10 +216,14 @@
 }
 
 .car-price {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-gold);
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-hover) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin: var(--spacing-sm) 0;
+    letter-spacing: -0.5px;
 }
 
 .car-actions {
