@@ -36,7 +36,6 @@ async function loadCarDetails() {
 function displayCarDetails(car) {
     const container = document.getElementById('detailsContainer');
     const images = Array.isArray(car.images) ? car.images : [];
-    const features = Array.isArray(car.features) ? car.features : [];
 
     if (images.length === 0) {
         images.push('https://via.placeholder.com/800x600?text=No+Image');
@@ -105,17 +104,6 @@ function displayCarDetails(car) {
                         <div class="description-section">
                             <h3 class="section-heading">Description</h3>
                             <p class="description-text">${car.description}</p>
-                        </div>
-                    ` : ''}
-
-                    ${features.length > 0 ? `
-                        <div class="description-section">
-                            <h3 class="section-heading">Features</h3>
-                            <div class="features-list">
-                                ${features.map(feature => `
-                                    <div class="feature-item">${feature}</div>
-                                `).join('')}
-                            </div>
                         </div>
                     ` : ''}
                 </div>
