@@ -76,6 +76,45 @@ const CarService = {
 
         const uniqueBrands = [...new Set(data.map(car => car.brand))].sort();
         return uniqueBrands;
+    },
+
+    async createCar(carData) {
+        // Remove ID if accidentally provided - it's auto-generated
+        const cleanData = { ...carData };
+        delete cleanData.id;
+        delete cleanData.created_at;
+        delete cleanData.updated_at;
+
+        const { data, error } = await supabaseClient
+            .from('cars')
+            .insert([cleanData])
+            .select();
+
+        if (error) {
+            console.error('Error creating car:', error);
+            throw error;
+        }
+        return data;
+    },
+
+    async updateCar(id, updates) {
+        // Ensure ID and timestamps are not in the updates
+        const cleanUpdates = { ...updates };
+        delete cleanUpdates.id;
+        delete cleanUpdates.created_at;
+        delete cleanUpdates.updated_at;
+
+        const { data, error } = await supabaseClient
+            .from('cars')
+            .update(cleanUpdates)
+            .eq('id', id)
+            .select();
+
+        if (error) {
+            console.error('Error updating car:', error);
+            throw error;
+        }
+        return data;
     }
 };
 
@@ -88,40 +127,98 @@ const StaffService = {
 
         if (error) throw error;
         return data;
+    },
+
+    async createStaff(staffData) {
+        // Remove ID if accidentally provided - it's auto-generated
+        const cleanData = { ...staffData };
+        delete cleanData.id;
+        delete cleanData.created_at;
+
+        const { data, error } = await supabaseClient
+            .from('staff')
+            .insert([cleanData])
+            .select();
+
+        if (error) {
+            console.error('Error creating staff:', error);
+            throw error;
+        }
+        return data;
+    },
+
+    async updateStaff(id, updates) {
+        // Ensure ID and timestamps are not in the updates
+        const cleanUpdates = { ...updates };
+        delete cleanUpdates.id;
+        delete cleanUpdates.created_at;
+
+        const { data, error } = await supabaseClient
+            .from('staff')
+            .update(cleanUpdates)
+            .eq('id', id)
+            .select();
+
+        if (error) {
+            console.error('Error updating staff:', error);
+            throw error;
+        }
+        return data;
     }
 };
 
 const InquiryService = {
     async submitInquiry(inquiryData) {
+        // Remove ID if accidentally provided - it's auto-generated
+        const cleanData = { ...inquiryData };
+        delete cleanData.id;
+
         const { data, error } = await supabaseClient
             .from('inquiries')
-            .insert([inquiryData])
+            .insert([cleanData])
             .select();
 
-        if (error) throw error;
+        if (error) {
+            console.error('Error submitting inquiry:', error);
+            throw error;
+        }
         return data;
     }
 };
 
 const TransactionService = {
     async createTransaction(transactionData) {
+        // Remove ID if accidentally provided - it's auto-generated
+        const cleanData = { ...transactionData };
+        delete cleanData.id;
+
         const { data, error } = await supabaseClient
             .from('transactions')
-            .insert([transactionData])
+            .insert([cleanData])
             .select();
 
-        if (error) throw error;
+        if (error) {
+            console.error('Error creating transaction:', error);
+            throw error;
+        }
         return data;
     },
 
     async updateTransaction(id, updates) {
+        // Ensure ID is not in the updates object
+        const cleanUpdates = { ...updates };
+        delete cleanUpdates.id;
+
         const { data, error } = await supabaseClient
             .from('transactions')
-            .update(updates)
+            .update(cleanUpdates)
             .eq('id', id)
             .select();
 
-        if (error) throw error;
+        if (error) {
+            console.error('Error updating transaction:', error);
+            throw error;
+        }
         return data;
     }
 };
