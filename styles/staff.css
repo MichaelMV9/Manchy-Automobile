@@ -1,7 +1,7 @@
 .page-header {
-    background: linear-gradient(135deg, var(--color-black) 0%, var(--color-dark-gray) 50%, var(--color-black) 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
     color: var(--color-white);
-    padding: calc(80px + var(--spacing-2xl)) var(--spacing-md) var(--spacing-2xl);
+    padding: calc(100px + var(--spacing-2xl)) var(--spacing-md) var(--spacing-3xl);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -14,15 +14,25 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(244, 196, 48, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(244, 196, 48, 0.15) 0%, transparent 70%);
     pointer-events: none;
 }
 
+.page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--color-gold) 50%, transparent 100%);
+}
+
 .page-title {
-    font-size: 3.2rem;
+    font-size: 3.5rem;
     font-weight: 800;
-    margin-bottom: var(--spacing-sm);
-    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-hover) 100%);
+    margin-bottom: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-gold) 0%, #ffd700 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -31,14 +41,16 @@
 }
 
 .page-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     color: var(--color-light-gray);
     position: relative;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
+    font-weight: 300;
 }
 
 .staff-section {
-    padding: var(--spacing-2xl) 0;
+    padding: var(--spacing-3xl) 0;
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
 }
 
 .staff-grid {

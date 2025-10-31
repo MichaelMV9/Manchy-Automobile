@@ -35,7 +35,7 @@
 
 .main-image {
     width: 100%;
-    height: 500px;
+    height: 600px;
     border-radius: var(--border-radius);
     overflow: hidden;
     background-color: var(--color-light-gray);
@@ -249,7 +249,7 @@
     }
 
     .main-image {
-        height: 400px;
+        height: 500px;
     }
 }
 
@@ -281,7 +281,7 @@
 
 @media (max-width: 480px) {
     .main-image {
-        height: 300px;
+        height: 400px;
     }
 
     .car-name {
