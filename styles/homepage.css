@@ -1,7 +1,8 @@
 .hero {
     position: relative;
     height: 100vh;
-    min-height: 600px;
+    min-height: 500px;
+    max-height: 100vh;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -34,6 +35,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 .hero-overlay {
@@ -337,8 +339,12 @@
     }
 
     .cars-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: 1fr;
         gap: var(--spacing-md);
+    }
+
+    .car-image {
+        height: 280px;
     }
 
     .about-stats {
@@ -348,7 +354,9 @@
 
 @media (max-width: 480px) {
     .hero {
-        min-height: 500px;
+        height: 70vh;
+        min-height: 400px;
+        max-height: 600px;
     }
 
     .hero-title {

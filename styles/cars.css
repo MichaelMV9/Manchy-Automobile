@@ -295,8 +295,12 @@
     }
 
     .cars-grid {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        grid-template-columns: 1fr;
         gap: var(--spacing-md);
+    }
+
+    .car-image {
+        height: 280px;
     }
 }
 
@@ -315,6 +319,10 @@
 
     .cars-grid {
         grid-template-columns: 1fr;
+    }
+
+    .car-image {
+        height: 260px;
     }
 
     .car-actions {

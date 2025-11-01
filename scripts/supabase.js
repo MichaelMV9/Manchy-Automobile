@@ -169,7 +169,6 @@ const StaffService = {
 
 const InquiryService = {
     async submitInquiry(inquiryData) {
-        // Remove ID if accidentally provided - it's auto-generated
         const cleanData = { ...inquiryData };
         delete cleanData.id;
 
@@ -182,6 +181,34 @@ const InquiryService = {
             console.error('Error submitting inquiry:', error);
             throw error;
         }
+
+        try {
+            const carDetails = inquiryData.car_id ?
+                await CarService.getCarById(inquiryData.car_id) : null;
+
+            const carInfo = carDetails ?
+                `${carDetails.brand} ${carDetails.model} (${carDetails.year})` :
+                'General Inquiry';
+
+            await fetch(`${CONFIG.SUPABASE_URL}/functions/v1/send-inquiry-email`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${CONFIG.SUPABASE_ANON_KEY}`,
+                },
+                body: JSON.stringify({
+                    customerName: cleanData.customer_name,
+                    customerEmail: cleanData.customer_email,
+                    customerPhone: cleanData.customer_phone,
+                    inquiryType: cleanData.inquiry_type,
+                    message: cleanData.message,
+                    carDetails: carInfo
+                })
+            });
+        } catch (emailError) {
+            console.log('Email notification error (non-critical):', emailError);
+        }
+
         return data;
     }
 };

@@ -130,7 +130,7 @@ function contactWhatsApp() {
     window.open(whatsappUrl, '_blank');
 }
 
-function initiatePayment() {
+async function initiatePayment() {
     const email = prompt('Please enter your email address for payment:');
 
     if (!email || !email.includes('@')) {
@@ -139,73 +139,48 @@ function initiatePayment() {
     }
 
     const name = prompt('Please enter your full name:');
-    if (!name) {
-        showNotification('Please provide your name', 'error');
+    if (!name || name.trim().length < 2) {
+        showNotification('Please provide your full name', 'error');
         return;
     }
 
     const phone = prompt('Please enter your phone number:');
-    if (!phone) {
-        showNotification('Please provide your phone number', 'error');
+    if (!phone || phone.trim().length < 10) {
+        showNotification('Please provide a valid phone number', 'error');
         return;
     }
 
-    const amount = currentCar.price * 100;
-
-    const handler = PaystackPop.setup({
-        key: CONFIG.PAYSTACK_PUBLIC_KEY,
-        email: email,
-        amount: amount,
-        currency: 'NGN',
-        ref: 'MA-' + Math.floor(Math.random() * 1000000000 + 1),
-        metadata: {
-            custom_fields: [
-                {
-                    display_name: 'Car',
-                    variable_name: 'car',
-                    value: `${currentCar.brand} ${currentCar.model}`
-                },
-                {
-                    display_name: 'Customer Name',
-                    variable_name: 'customer_name',
-                    value: name
-                },
-                {
-                    display_name: 'Phone',
-                    variable_name: 'phone',
-                    value: phone
-                }
-            ]
-        },
-        onClose: function() {
-            showNotification('Payment cancelled', 'error');
-        },
-        callback: async function(response) {
-            try {
-                await TransactionService.createTransaction({
+    try {
+        const response = await fetch(`${CONFIG.SUPABASE_URL}/functions/v1/initialize-payment`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${CONFIG.SUPABASE_ANON_KEY}`,
+            },
+            body: JSON.stringify({
+                email: email,
+                amount: currentCar.price,
+                metadata: {
                     car_id: currentCar.id,
+                    car_name: `${currentCar.brand} ${currentCar.model}`,
                     customer_name: name,
-                    customer_email: email,
-                    customer_phone: phone,
-                    amount: currentCar.price,
-                    payment_reference: response.reference,
-                    payment_status: 'Success'
-                });
+                    customer_phone: phone
+                }
+            })
+        });
 
-                showNotification('Payment successful! We will contact you shortly.');
-                setTimeout(() => {
-                    const message = `Payment completed for ${currentCar.brand} ${currentCar.model}. Reference: ${response.reference}`;
-                    const whatsappUrl = `https://wa.me/2347076470444?text=${encodeURIComponent(message)}`;
-                    window.open(whatsappUrl, '_blank');
-                }, 2000);
-            } catch (error) {
-                console.error('Error recording transaction:', error);
-                showNotification('Payment processed, but there was an error recording it. Please contact us.', 'error');
-            }
+        const result = await response.json();
+
+        if (!result.status || !result.data) {
+            throw new Error(result.message || 'Payment initialization failed');
         }
-    });
 
-    handler.openIframe();
+        window.location.href = result.data.authorization_url;
+
+    } catch (error) {
+        console.error('Payment error:', error);
+        showNotification('Unable to process payment. Please try again or contact us directly.', 'error');
+    }
 }
 
 function setupInquiryForm() {
