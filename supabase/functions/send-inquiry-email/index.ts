@@ -17,7 +17,7 @@ Deno.serve(async (req: Request) => {
   try {
     const { customerName, customerEmail, customerPhone, inquiryType, message, carDetails } = await req.json();
 
-    const managerEmail = Deno.env.get("MANAGER_EMAIL") || "manchyautomobile@gmail.com";
+    const managerEmail = Deno.env.get("MANAGER_EMAIL") || "operationmanager@manchyautomobile.com";
 
     const emailContent = `
       <h2>New Customer Inquiry</h2>
