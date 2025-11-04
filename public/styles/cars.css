@@ -40,6 +40,8 @@
 
 .cars-section {
     padding: var(--spacing-2xl) 0;
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FAFAFA 100%);
+    min-height: 100vh;
 }
 
 .cars-layout {
@@ -49,13 +51,14 @@
 }
 
 .filters-sidebar {
-    background-color: var(--color-white);
+    background-color: #FFFFFF;
     border-radius: var(--border-radius);
     padding: var(--spacing-lg);
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(244, 196, 48, 0.1);
     height: fit-content;
     position: sticky;
-    top: 100px;
+    top: 110px;
 }
 
 .filters-header {
@@ -132,8 +135,10 @@
     align-items: center;
     margin-bottom: var(--spacing-lg);
     padding: var(--spacing-md);
-    background-color: var(--color-light-gray);
+    background-color: #FFFFFF;
     border-radius: var(--border-radius);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(244, 196, 48, 0.1);
 }
 
 .results-count {
@@ -176,16 +181,18 @@
 }
 
 .car-card {
-    background-color: var(--color-white);
+    background-color: #FFFFFF;
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
     transition: all var(--transition-normal);
+    border: 1px solid rgba(244, 196, 48, 0.08);
 }
 
 .car-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--box-shadow-hover);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(244, 196, 48, 0.2);
+    border-color: rgba(244, 196, 48, 0.3);
 }
 
 .car-image {
@@ -193,7 +200,7 @@
     height: 300px;
     overflow: hidden;
     position: relative;
-    background-color: var(--color-light-gray);
+    background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 100%);
 }
 
 .car-image img {
@@ -201,6 +208,7 @@
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-slow);
+    filter: brightness(1.05) contrast(1.02);
 }
 
 .car-card:hover .car-image img {
