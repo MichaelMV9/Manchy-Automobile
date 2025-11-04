@@ -39,6 +39,7 @@
 
 .about-content-section {
     padding: var(--spacing-2xl) 0;
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FAFAFA 50%, #FFFFFF 100%);
 }
 
 .page-header {
@@ -83,19 +84,22 @@
 }
 
 .content-image {
-    border-radius: var(--border-radius);
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    border: 2px solid rgba(244, 196, 48, 0.15);
 }
 
 .content-image img {
     width: 100%;
     height: auto;
+    filter: brightness(1.02) contrast(1.05);
 }
 
 .values-section {
-    background-color: var(--color-light-gray);
+    background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 50%, #F8F9FA 100%);
     padding: var(--spacing-2xl) 0;
+    position: relative;
 }
 
 .values-grid {
@@ -105,16 +109,19 @@
 }
 
 .value-card {
-    background-color: var(--color-white);
+    background: linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 100%);
     padding: var(--spacing-xl);
-    border-radius: var(--border-radius);
+    border-radius: 16px;
     text-align: center;
-    box-shadow: var(--box-shadow);
-    transition: transform var(--transition-normal);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all var(--transition-normal);
+    border: 2px solid rgba(244, 196, 48, 0.12);
 }
 
 .value-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(244, 196, 48, 0.3);
 }
 
 .value-icon {

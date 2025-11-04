@@ -39,6 +39,7 @@
 
 .staff-section {
     padding: var(--spacing-2xl) 0;
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FAFAFA 50%, #FFFFFF 100%);
 }
 
 .staff-grid {
@@ -48,19 +49,19 @@
 }
 
 .staff-card {
-    background: linear-gradient(to bottom, var(--color-white) 0%, var(--color-light-gray) 100%);
-    border-radius: var(--border-radius-lg);
+    background: #FFFFFF;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
     transition: all var(--transition-normal);
     text-align: center;
-    border: 1px solid rgba(244, 196, 48, 0.1);
+    border: 2px solid rgba(244, 196, 48, 0.15);
 }
 
 .staff-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-    border-color: var(--color-gold);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    border-color: rgba(244, 196, 48, 0.4);
 }
 
 .staff-photo {
@@ -97,6 +98,7 @@
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-slow);
+    filter: brightness(1.02) contrast(1.05);
 }
 
 .staff-card:hover .staff-photo img {
