@@ -1,6 +1,7 @@
 .details-container {
-    padding: calc(80px + var(--spacing-xl)) 0 var(--spacing-2xl);
+    padding: calc(90px + var(--spacing-xl)) 0 var(--spacing-2xl);
     min-height: 60vh;
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FAFAFA 50%, #FFFFFF 100%);
 }
 
 .car-details-wrapper {
@@ -36,16 +37,19 @@
 .main-image {
     width: 100%;
     height: 600px;
-    border-radius: var(--border-radius);
+    border-radius: 20px;
     overflow: hidden;
-    background-color: var(--color-light-gray);
+    background: linear-gradient(135deg, #F5F5F5 0%, #FAFAFA 100%);
     margin-bottom: var(--spacing-md);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    border: 2px solid rgba(244, 196, 48, 0.15);
 }
 
 .main-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: brightness(1.03) contrast(1.05) saturate(1.1);
 }
 
 .thumbnail-grid {
@@ -56,11 +60,17 @@
 
 .thumbnail {
     height: 80px;
-    border-radius: var(--border-radius);
+    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    border: 3px solid transparent;
-    transition: border-color var(--transition-fast);
+    border: 3px solid rgba(0, 0, 0, 0.05);
+    transition: all var(--transition-fast);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.thumbnail:hover {
+    border-color: rgba(244, 196, 48, 0.5);
+    transform: scale(1.05);
 }
 
 .thumbnail.active {

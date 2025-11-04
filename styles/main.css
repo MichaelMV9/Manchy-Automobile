@@ -265,35 +265,38 @@ ul {
 }
 
 .section-title {
-    font-size: 2.8rem;
+    font-size: 3.2rem;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--color-black) 0%, var(--color-dark-gray) 100%);
+    background: linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #000000 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: var(--spacing-md);
     text-align: center;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
     position: relative;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .section-title::after {
     content: '';
     display: block;
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-hover) 100%);
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(90deg, transparent 0%, var(--color-gold) 20%, var(--color-gold-hover) 50%, var(--color-gold) 80%, transparent 100%);
     margin: var(--spacing-md) auto 0;
-    border-radius: 2px;
-    box-shadow: 0 0 15px rgba(244, 196, 48, 0.4);
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgba(244, 196, 48, 0.5);
 }
 
 .section-subtitle {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: var(--color-text-light);
     text-align: center;
     margin-bottom: var(--spacing-xl);
-    line-height: 1.6;
+    line-height: 1.7;
+    letter-spacing: 0.3px;
+    font-weight: 400;
 }
 
 .section-title-small {
