@@ -1,0 +1,203 @@
+.page-header {
+    background: linear-gradient(135deg, var(--color-black) 0%, var(--color-dark-gray) 50%, var(--color-black) 100%);
+    color: var(--color-white);
+    padding: calc(80px + var(--spacing-2xl)) var(--spacing-md) var(--spacing-2xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(244, 196, 48, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.page-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-hover) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+    position: relative;
+}
+
+.page-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-light-gray);
+    position: relative;
+    letter-spacing: 0.3px;
+}
+
+.about-content-section {
+    padding: var(--spacing-2xl) 0;
+}
+
+.page-header {
+    padding: var (--sppacing-4xl)0;
+    text-align: center;
+    margin-top: var(--spacing-xl)0;
+}
+.page-header h1 {
+    font-size: 2.5rem;
+    color: var(--color-black);
+    font-weight: 700;
+}
+
+.page-title {
+    margin-top: 100px;
+}
+
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: center;
+}
+
+.content-text {
+    padding-right: var(--spacing-lg);
+}
+
+.section-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: var(--spacing-md);
+}
+
+.content-text p {
+    line-height: 1.8;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.05rem;
+}
+
+.content-image {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.content-image img {
+    width: 100%;
+    height: auto;
+}
+
+.values-section {
+    background-color: var(--color-light-gray);
+    padding: var(--spacing-2xl) 0;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.value-card {
+    background-color: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-normal);
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+}
+
+.value-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.value-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: var(--spacing-sm);
+}
+
+.value-text {
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+.mission-section {
+    padding: var(--spacing-2xl) 0;
+}
+
+.mission-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.mission-text {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--color-text-light);
+}
+
+.cta-section {
+    background: linear-gradient(135deg, var(--color-black) 0%, var(--color-dark-gray) 100%);
+    color: var(--color-white);
+    padding: var(--spacing-2xl) 0;
+}
+
+.cta-content {
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-xl);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-text {
+        padding-right: 0;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
