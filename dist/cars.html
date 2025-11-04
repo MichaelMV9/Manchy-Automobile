@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Manchy Automobile - Premium Luxury Cars in Ibadan. Browse our collection of 60+ quality vehicles with flexible payment options.">
-    <meta name="keywords" content="luxury cars, automobile, cars for sale, Ibadan, Nigeria, premium vehicles">
-    <title>Manchy Automobile - Premium Luxury Cars</title>
+    <meta name="description" content="Browse our complete collection of premium luxury vehicles at Manchy Automobile">
+    <title>All Cars - Manchy Automobile</title>
     <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/homepage.css">
+    <link rel="stylesheet" href="/styles/cars.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -24,8 +23,8 @@
                 <span></span>
             </button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="/index.html" class="nav-link active">Home</a></li>
-                <li><a href="/cars.html" class="nav-link">All Cars</a></li>
+                <li><a href="/index.html" class="nav-link">Home</a></li>
+                <li><a href="/cars.html" class="nav-link active">All Cars</a></li>
                 <li><a href="/about.html" class="nav-link">About Us</a></li>
                 <li><a href="/staff.html" class="nav-link">Our Team</a></li>
                 <li><a href="/contact.html" class="nav-link">Contact</a></li>
@@ -33,97 +32,88 @@
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-slideshow" id="heroSlideshow">
-            <div class="hero-slide active">
-                <img src="images/Background-Slideshow(7).jpeg" alt="Manchy Automobile Showroom">
-            </div>
-            <div class="hero-slide active">
-                <img src="images/Background-Slideshow(2).jpeg" alt="Manchy Automobile Showroom">
-            </div>
-            <div class="hero-slide active">
-                <img src="images/Background-Slideshow(6).jpeg" alt="Manchy Automobile Showroom">
-            </div>
-            <div class="hero-slide active">
-                <img src="images/Background-Slideshow(4).jpeg" alt="Manchy Automobile Showroom">
-            </div>
-            <div class="hero-slide active">
-                <img src="images/Background-Slideshow(5).jpeg" alt="Manchy Automobile Showroom">
-            </div>
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">Welcome to Manchy Automobile</h1>
-            <p class="hero-subtitle">Your Premier Destination for Quality Vehicles</p>
-            <div class="hero-buttons">
-                <a href="/cars.html" class="btn btn-primary">Browse Collection</a>
-                <a href="/contact.html" class="btn btn-secondary">Contact Us</a>
-            </div>
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Our Premium Collection</h1>
+            <p class="page-subtitle">Discover quality and Luxury vehicles tailored to your needs</p>
         </div>
     </section>
 
-    <section class="search-section">
+    <section class="cars-section">
         <div class="container">
-            <div class="search-card">
-                <h2 class="section-title-small">Find Your Quality Car</h2>
-                <form class="search-form" id="quickSearchForm">
-                    <div class="search-grid">
-                        <select name="brand" id="searchBrand" class="search-input">
-                            <option value="">All Brands</option>
-                        </select>
-                        <select name="condition" id="searchCondition" class="search-input">
-                            <option value="">Condition</option>
-                            <option value="New">New</option>
-                            <option value="Used">Used</option>
-                        </select>
-                        <select name="price" id="searchPrice" class="search-input">
-                            <option value="">Price Range</option>
-                            <option value="0-5000000">Under ₦5M</option>
-                            <option value="5000000-10000000">₦5M - ₦10M</option>
-                            <option value="10000000-20000000">₦10M - ₦20M</option>
-                            <option value="20000000-999999999">Above ₦20M</option>
-                        </select>
-                        <button type="submit" class="btn btn-primary">Search</button>
+            <div class="cars-layout">
+                <aside class="filters-sidebar" data-animate>
+                    <div class="filters-header">
+                        <h3>Filter Vehicles</h3>
+                        <button class="btn-reset" id="resetFilters">Reset All</button>
                     </div>
-                </form>
-            </div>
-        </div>
-    </section>
 
-    <section class="featured-cars">
-        <div class="container">
-            <h2 class="section-title" data-animate>Featured Vehicles</h2>
-            <p class="section-subtitle" data-animate data-delay="50">Handpicked premium vehicles from our collection</p>
-            <div class="cars-grid" id="featuredCarsGrid">
-                <div class="loading">Loading featured cars...</div>
-            </div>
-            <div class="section-cta" data-animate>
-                <a href="/cars.html" class="btn btn-primary">View All Vehicles</a>
-            </div>
-        </div>
-    </section>
+                    <form class="filters-form" id="filtersForm">
+                        <div class="filter-group">
+                            <label class="filter-label">Brand</label>
+                            <select name="brand" id="filterBrand" class="filter-input">
+                                <option value="">All Brands</option>
+                            </select>
+                        </div>
 
-    <section class="about-preview">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-content" data-animate>
-                    <h2 class="section-title">About Manchy Automobile</h2>
-                    <p>At Manchy Automobile, we are committed to providing our customers with premium quality vehicles and exceptional service. Located in the heart of Ibadan, we offer a carefully curated selection of luxury cars to meet your automotive needs.</p>
-                    <p>With years of experience in the automotive industry, our team of professionals ensures that every vehicle meets our high standards of quality and performance.</p>
-                    <a href="/about.html" class="btn btn-secondary">Learn More About Us</a>
-                </div>
-                <div class="about-stats" data-animate data-delay="100">
-                    <div class="stat-card">
-                        <div class="stat-number">60+</div>
-                        <div class="stat-label">Premium Vehicles</div>
+                        <div class="filter-group">
+                            <label class="filter-label">Condition</label>
+                            <select name="condition" id="filterCondition" class="filter-input">
+                                <option value="">All</option>
+                                <option value="New">New</option>
+                                <option value="Used">Used</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Transmission</label>
+                            <select name="transmission" id="filterTransmission" class="filter-input">
+                                <option value="">All</option>
+                                <option value="Automatic">Automatic</option>
+                                <option value="Manual">Manual</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Year</label>
+                            <select name="year" id="filterYear" class="filter-input">
+                                <option value="">All Years</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Price Range</label>
+                            <select name="price" id="filterPrice" class="filter-input">
+                                <option value="">All Prices</option>
+                                <option value="0-5000000">Under ₦5M</option>
+                                <option value="5000000-10000000">₦5M - ₦10M</option>
+                                <option value="10000000-20000000">₦10M - ₦20M</option>
+                                <option value="20000000-30000000">₦20M - ₦30M</option>
+                                <option value="30000000-999999999">Above ₦30M</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">Apply Filters</button>
+                    </form>
+                </aside>
+
+                <div class="cars-content">
+                    <div class="cars-toolbar">
+                        <div class="results-count" id="resultsCount">Loading...</div>
+                        <div class="sort-controls">
+                            <label for="sortBy">Sort by:</label>
+                            <select id="sortBy" class="sort-select">
+                                <option value="newest">Newest First</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="year-new">Year: Newest</option>
+                                <option value="year-old">Year: Oldest</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Quality Assured</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Customer Support</div>
+
+                    <div class="cars-grid" id="carsGrid">
+                        <div class="loading">Loading vehicles...</div>
                     </div>
                 </div>
             </div>
@@ -193,7 +183,7 @@
     <script src="/scripts/config.js"></script>
     <script src="/scripts/supabase.js"></script>
     <script src="/scripts/main.js"></script>
-    <script src="/scripts/homepage.js"></script>
+    <script src="/scripts/cars.js"></script>
     <script src="/scripts/animations.js"></script>
 </body>
 </html>
