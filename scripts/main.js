@@ -81,8 +81,6 @@ function createCarCard(car) {
             <div class="car-details">
                 <span>${car.year}</span>
                 <span>•</span>
-                <span>${formatNumber(car.mileage)} km</span>
-                <span>•</span>
                 <span>${car.transmission}</span>
             </div>
             <div class="car-price">${formatCurrency(car.price)}</div>

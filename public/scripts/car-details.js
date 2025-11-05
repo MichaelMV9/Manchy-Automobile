@@ -79,10 +79,6 @@ function displayCarDetails(car) {
                             <span class="spec-value">${car.year}</span>
                         </div>
                         <div class="spec-item">
-                            <span class="spec-label">Mileage</span>
-                            <span class="spec-value">${formatNumber(car.mileage)} km</span>
-                        </div>
-                        <div class="spec-item">
                             <span class="spec-label">Transmission</span>
                             <span class="spec-value">${car.transmission}</span>
                         </div>
