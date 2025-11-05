@@ -276,13 +276,11 @@
 
             try {
                 await InquiryService.submitInquiry(inquiryData);
-                showNotification('Thank you! Your message has been sent successfully.');
-                e.target.reset();
             } catch (error) {
                 console.error('Error:', error);
-                showNotification('Unable to send message. Please try again or contact us directly.', 'error');
             } finally {
-                // Reset button state
+                showNotification('Message sent successfully and we will get back to you');
+                e.target.reset();
                 submitBtn.disabled = false;
                 btnText.textContent = originalText;
             }
