@@ -74,7 +74,6 @@ function createCarCard(car) {
     card.innerHTML = `
         <div class="car-image">
             <img src="${primaryImage}" alt="${car.brand} ${car.model}" loading="lazy">
-            <span class="car-badge">${car.condition}</span>
         </div>
         <div class="car-info">
             <h3 class="car-title">${car.brand} ${car.model}</h3>

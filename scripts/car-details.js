@@ -63,7 +63,6 @@ function displayCarDetails(car) {
 
                 <div class="info-section">
                     <div class="car-header">
-                        <span class="car-condition-badge">${car.condition}</span>
                         <h1 class="car-name">${car.brand} ${car.model}</h1>
                         <div class="car-main-price">${formatCurrency(car.price)}</div>
                     </div>
@@ -89,10 +88,6 @@ function displayCarDetails(car) {
                         <div class="spec-item">
                             <span class="spec-label">Color</span>
                             <span class="spec-value">${car.color || 'N/A'}</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Condition</span>
-                            <span class="spec-value">${car.condition}</span>
                         </div>
                     </div>
 
