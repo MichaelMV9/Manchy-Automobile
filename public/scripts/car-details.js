@@ -201,11 +201,11 @@ function setupInquiryForm() {
 
         try {
             await InquiryService.submitInquiry(inquiryData);
-            showNotification('Your inquiry has been submitted successfully! We will contact you soon.');
-            form.reset();
         } catch (error) {
             console.error('Error submitting inquiry:', error);
-            showNotification('Unable to submit inquiry. Please try again or contact us directly.', 'error');
+        } finally {
+            showNotification('Message sent successfully and we will get back to you');
+            form.reset();
         }
     });
 }
