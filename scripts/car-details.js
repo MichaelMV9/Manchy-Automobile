@@ -89,6 +89,10 @@ function displayCarDetails(car) {
                             <span class="spec-label">Color</span>
                             <span class="spec-value">${car.color || 'N/A'}</span>
                         </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Condition</span>
+                            <span class="spec-value">${car.condition}</span>
+                        </div>
                     </div>
 
                     ${car.description ? `
