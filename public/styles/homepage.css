@@ -212,6 +212,39 @@
     box-shadow: var(--box-shadow-gold);
 }
 
+.condition-badge {
+    position: absolute;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+.badge-new {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: #FFFFFF;
+    box-shadow: 0 4px 16px rgba(34, 197, 94, 0.4);
+}
+
+.badge-foreign-used {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: #FFFFFF;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+}
+
+.badge-default {
+    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(100, 116, 139, 0.3);
+}
+
 .car-info {
     padding: var(--spacing-md);
 }

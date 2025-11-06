@@ -65,6 +65,22 @@ function formatNumber(number) {
     return new Intl.NumberFormat('en-NG').format(number);
 }
 
+function formatConditionDisplay(condition) {
+    if (!condition) return 'N/A';
+    const conditionLower = condition.toLowerCase().trim();
+    if (conditionLower === 'used') {
+        return 'Foreign Used';
+    }
+    return condition;
+}
+
+function getConditionBadgeClass(condition) {
+    const formattedCondition = formatConditionDisplay(condition);
+    if (formattedCondition === 'New') return 'badge-new';
+    if (formattedCondition === 'Foreign Used') return 'badge-foreign-used';
+    return 'badge-default';
+}
+
 function createCarCard(car) {
     const images = Array.isArray(car.images) ? car.images : [];
     const primaryImage = images.length > 0 ? images[0] : 'https://via.placeholder.com/400x300?text=No+Image';
@@ -74,6 +90,9 @@ function createCarCard(car) {
     card.innerHTML = `
         <div class="car-image">
             <img src="${primaryImage}" alt="${car.brand} ${car.model}" loading="lazy">
+            <div class="condition-badge ${getConditionBadgeClass(car.condition)}">
+                ${formatConditionDisplay(car.condition)}
+            </div>
         </div>
         <div class="car-info">
             <h3 class="car-title">${car.brand} ${car.model}</h3>
