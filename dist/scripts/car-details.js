@@ -1,6 +1,15 @@
 let currentCar = null;
 let currentImageIndex = 0;
 
+function formatConditionDisplay(condition) {
+    if (!condition) return 'N/A';
+    const conditionLower = condition.toLowerCase().trim();
+    if (conditionLower === 'used') {
+        return 'Foreign Used';
+    }
+    return condition;
+}
+
 document.addEventListener('DOMContentLoaded', async function() {
     await loadCarDetails();
     setupInquiryForm();
@@ -63,7 +72,6 @@ function displayCarDetails(car) {
 
                 <div class="info-section">
                     <div class="car-header">
-                        <span class="car-condition-badge">${car.condition}</span>
                         <h1 class="car-name">${car.brand} ${car.model}</h1>
                         <div class="car-main-price">${formatCurrency(car.price)}</div>
                     </div>
@@ -79,10 +87,6 @@ function displayCarDetails(car) {
                             <span class="spec-value">${car.year}</span>
                         </div>
                         <div class="spec-item">
-                            <span class="spec-label">Mileage</span>
-                            <span class="spec-value">${formatNumber(car.mileage)} km</span>
-                        </div>
-                        <div class="spec-item">
                             <span class="spec-label">Transmission</span>
                             <span class="spec-value">${car.transmission}</span>
                         </div>
@@ -96,7 +100,7 @@ function displayCarDetails(car) {
                         </div>
                         <div class="spec-item">
                             <span class="spec-label">Condition</span>
-                            <span class="spec-value">${car.condition}</span>
+                            <span class="spec-value">${formatConditionDisplay(car.condition)}</span>
                         </div>
                     </div>
 
