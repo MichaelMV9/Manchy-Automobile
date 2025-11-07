@@ -103,7 +103,7 @@ function createCarCard(car) {
             </div>
             <div class="car-price">${formatCurrency(car.price)}</div>
             <div class="car-actions">
-                <a href="car-details.html?id=${car.id}" class="btn btn-primary">View Details</a>
+                <a href="/car-details.html?id=${car.id}" class="btn btn-primary">View Details</a>
                 <button class="btn btn-secondary" onclick="quickInquiry('${car.id}', '${car.brand} ${car.model}')">Inquire</button>
             </div>
         </div>
