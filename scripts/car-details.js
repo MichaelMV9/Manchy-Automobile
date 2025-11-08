@@ -159,11 +159,10 @@ async function initiatePayment() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${CONFIG.SUPABASE_ANON_KEY}`,
             },
             body: JSON.stringify({
                 email: email,
-                amount: currentCar.price,
+                amount: Math.round(Number(currentCar.price) * 100),
                 metadata: {
                     car_id: currentCar.id,
                     car_name: `${currentCar.brand} ${currentCar.model}`,
