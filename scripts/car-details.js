@@ -172,17 +172,28 @@ async function initiatePayment() {
             })
         });
 
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Payment initialization failed:', errorText);
+            try {
+                const errorJson = JSON.parse(errorText);
+                throw new Error(errorJson.message || 'Payment initialization failed');
+            } catch (parseError) {
+                throw new Error('Payment initialization failed. Please try again.');
+            }
+        }
+
         const result = await response.json();
 
-        if (!result.status || !result.data) {
-            throw new Error(result.message || 'Payment initialization failed');
+        if (!result.status || !result.data || !result.data.authorization_url) {
+            throw new Error(result.message || 'Invalid payment response');
         }
 
         window.location.href = result.data.authorization_url;
 
     } catch (error) {
         console.error('Payment error:', error);
-        showNotification('Unable to process payment. Please try again or contact us directly.', 'error');
+        showNotification(error.message || 'Unable to process payment. Please try again or contact us directly.', 'error');
     }
 }
 
