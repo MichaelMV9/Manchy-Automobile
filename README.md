@@ -201,4 +201,4 @@ For questions about:
 
 ---
 
-**Note**: Current car images use placeholder images from Pexels. Replace with actual vehicle photos by following the instructions in the image management section.
+
